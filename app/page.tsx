@@ -1,0 +1,41 @@
+"use client"
+
+import { useState } from "react"
+import { Header } from "@/components/header"
+import { HeroSection } from "@/components/hero-section"
+import { QuickLinksSection } from "@/components/quick-links-section"
+import { ContractorSignupSection } from "@/components/contractor-signup-section"
+import { FeaturedProductsSection } from "@/components/featured-products-section"
+import { SocialMediaSection } from "@/components/social-media-section"
+import { LatestDeliveryWidget } from "@/components/latest-delivery-widget"
+import { Footer } from "@/components/footer"
+import { AILandscapeAssistant } from "@/components/ai-landscape-assistant"
+
+export default function HomePage() {
+  const [language, setLanguage] = useState<"en" | "es">("en")
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header language={language} onLanguageChange={setLanguage} cartItemCount={0} isLoggedIn={false} />
+      <main>
+        <HeroSection language={language} />
+        <QuickLinksSection language={language} />
+
+        <ContractorSignupSection language={language} />
+        <FeaturedProductsSection language={language} />
+        <SocialMediaSection language={language} />
+
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-md mx-auto">
+              <LatestDeliveryWidget language={language} />
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer language={language} />
+
+      <AILandscapeAssistant language={language} />
+    </div>
+  )
+}
